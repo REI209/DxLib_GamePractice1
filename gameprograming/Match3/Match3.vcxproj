@@ -133,9 +133,12 @@
   <ItemGroup>
     <ClCompile Include="AppMain.cpp" />
     <ClCompile Include="FreamControl_cpp.cpp" />
+    <ClCompile Include="GameClearScene_.cpp" />
+    <ClCompile Include="GameMainScene_.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FreamControl_h.h" />
+    <ClInclude Include="GameClearScene_.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
