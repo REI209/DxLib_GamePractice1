@@ -42,6 +42,7 @@ LPSTR lpCmdLine,_In_ int nShowCmd)
 
 	//画面サイズの最大サイズ、カラービット数を設定
 	SetGraphMode(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_COLORBIT);
+
 	//Dxライブラリの初期化処理
 	//エラーが発生したら、終了する
 	if (DxLib_Init() == D_ERROR)
@@ -50,8 +51,8 @@ LPSTR lpCmdLine,_In_ int nShowCmd)
 	}
 
 	//各種機能の初期化
-	FreamControl_Initialize();
-	Input_Initialize();
+	FreamControl_Initialize();      //フレームレート制御機能
+	Input_Initialize();             //入力制御機能
 
 	//シーンマネージャー初期化処理
 	// エラーが発生したら、終了

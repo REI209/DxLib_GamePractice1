@@ -11,6 +11,6 @@
 /***********************************
 *プロトタイプ宣言
 ************************************/
-intGameClearScene_Initialize(void);
+int GameClearScene_Initialize(void);
 void GameClearScene_Update(void);
 void GameClearScene_Draw(void);
