@@ -1,5 +1,4 @@
 #pragma once
-#pragma once
 
 /******************
 *マクロ定義
@@ -13,6 +12,6 @@
 *プロトタイプ宣言
 *******************/
 
- int GameMainScene_Initialize(void);
+int GameMainScene_Initialize(void);
 void GameMainScene_Updata(void);
 void GameMainScene_Draw(void);

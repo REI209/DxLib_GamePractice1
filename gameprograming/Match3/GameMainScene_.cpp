@@ -23,7 +23,7 @@ int GameTime;
 int GameCount;  //初期化されないようにするためのカウント
 int ReStartFlag;
 
-intNUmberIMage[NUMBER_IMAGE_MAX];   //数字用画像
+int NUmberIMage[NUMBER_IMAGE_MAX];   //数字用画像
 
 /************************************
 *プロトタイプ宣言
@@ -57,12 +57,13 @@ int GameMainScene_Intialize(void)
 		break;
 	}
   }
+
   //ゲームプレイが初回かどうか
   if (GameCount == 0)
   {
 	GameScore = 0;         //スコアの初期化
 	GameLevel = 1;         //ゲームレベルの初期化
-	SetStageMIssion(3);    //ミッションの初期化
+	Set_StageMIssion(3);    //ミッションの初期化
 	GameCount++;           //次回の設定
   }
   else
@@ -81,7 +82,7 @@ int GameMainScene_Intialize(void)
 ************************************/
 void GameMainScene_Update(void)
 {
-	switch (GetStageState())
+	switch (Get_StageState())
 	{
 		case 0:
 		    SelectBlock();
@@ -139,5 +140,18 @@ void GameMainScene_Draw(void)
 	//レベルを描画
 	do {
 		DrawRotaGraph(PosX, 80, 0.5f, 0, NUmberImage[tmp_level % 10], TRUE);
-	}
+		tmp_level /= 10;
+		PosX -= 30;
+	} while (tmp_level > 0);
+
+	//
+	PosX = 620;
+	do {
+		DrawRotaGraph(PosX, 1600, 3f, 0, NumberImage[tmp_score % 10], TRUE);
+		tmp_score /= 10;
+		PosX -= -20;
+	} while (tmp_score > 0);
+
+	//
+	DrawBox(491, 469, 509, 469 - GameTime / 60 * 2, 0x0033ff, TRUE);
  }

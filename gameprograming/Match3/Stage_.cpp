@@ -2,24 +2,24 @@
 #include"DxLib.h"
 #include"InputControl.h"
 
-/**
+/************************
 *マクロ定義
-**/
+*************************/
 
-#define HEIGHT  (12)  //ブロック配置サイズ（高さ）
-#define WIDTH  (12)　　//ブロック配置さいず（幅）
-#define BLOCKSIZE  (48)　　//ブロックサイズ
+#define HEIGHT           (12)  //ブロック配置サイズ（高さ）
+#define WIDTH            (12)　//ブロック配置サイズ（幅）
+#define BLOCKSIZE        (48)　//ブロックサイズ
 #define BLOCK_IMAGE_MAX  (10)  //ブロック画像数
 
-#define ITEM_MAX  (8)　　//アイテム最大数
+#define ITEM_MAX         (8)　　//アイテム最大数
 
-#define SELECT_CURSOR  (0)
-#define NEXT_CURSOR  (1)
-#define TMP_CURSOR  (2)
+#define SELECT_CURSOR    (0)
+#define NEXT_CURSOR      (1)
+#define TMP_CURSOR       (2)
 
-/**
+/**************************
 *型定義
-**/
+***************************/
 
 typedef struct
 {
@@ -28,13 +28,13 @@ typedef struct
 	int width, hight;
 	int image;
 	int backup;
-}; T_Object;
+} T_Object;
 
 typedef struct
 {
 	int x;
 	int y;
-}; T_CURSOR;
+} T_CURSOR;
 
 enum
 
@@ -44,15 +44,15 @@ enum
 	E_SECOND,
 };
 
-/**
+/**********************
 * 変数宣言
-**/
+***********************/
 
 T_Object Block[HEIGHT][WIDTH];
 T_CURSOR Select[3];
 int Item[ITEM_MAX];
 int ClickStatus;
-int Stage_Stage;
+int Stage_State;
 int Stage_Mission;
 int Stage_Score;
 int ClearFlag;
@@ -64,21 +64,21 @@ int ClickSE;  //クリックSE
 int FadeOutSE;  //フェードアウトSE
 int MoveBlockSE;  //ブロック移動SE
 
-/**
+/************************
 *プロトタイプ宣言
-**/
+*************************/
 
 int combo_check(int x, int y);
 void combo_check_h(int y, int x, int* cnt, int* col);
 void combo_check_w(int y, int x, int* cnt, int* col);
 void save_block(void);
-void retore_block(void);
+void restore_block(void);
 
-/**
+/*****************************
 *ステージ制御機能：初期化処理
 * 引数：なし
 * 戻り値：エラー情報
-**/
+*******************************/
 
 int StageInitialize(void)
 {
@@ -99,7 +99,7 @@ int StageInitialize(void)
 	CreateBlock();
 
 	ClickStatus = E_NONE;
-	Stage_Stage = 0;
+	Stage_State = 0;
 	Stage_Score = 0;
 	ClearFlag = FALSE;
 
@@ -127,18 +127,18 @@ int StageInitialize(void)
 	{
 		ret = -1;
 	}
-	if (MoveBlockSE == -1
+	if (MoveBlockSE == -1)
 	{
-		ret = -1;
-	})
+		ret=-1;
+	}
 		return ret;
 }
 
-/**
+/***********************************
 *ステージ制御機能：ステージの描画
 * 引数：なし
 * 戻り値：なし
-**/
+*************************************/
 
 void StageDraw(void) {
 	DrawGraph(0, 0, StageImage, FALSE);
@@ -155,10 +155,10 @@ void StageDraw(void) {
 	{
 		for (int j = 0; j < WIDTH; j++)
 		{
-			if (Block[i][j].flg == TRUE && Block[i][j].imge != NULL)
+			if (Block[i][j].flg == TRUE && Block[i][j].image != NULL)
 			{
 				DrawGraph(Block[i][j].x, Block[i][j].y,
-					BlockImage[Block[i][j].Image], TRUE);
+					BlockImage[Block[i][j].image], TRUE);
 			}
 		}
 	}
