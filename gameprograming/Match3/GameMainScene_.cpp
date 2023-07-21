@@ -63,7 +63,7 @@ int GameMainScene_Intialize(void)
   {
 	GameScore = 0;         //スコアの初期化
 	GameLevel = 1;         //ゲームレベルの初期化
-	Set_StageMIssion(3);    //ミッションの初期化
+	Set_StageMission(3);    //ミッションの初期化
 	GameCount++;           //次回の設定
   }
   else
@@ -110,7 +110,7 @@ void GameMainScene_Update(void)
 	//制限時間が無くなったら、ゲームオーバーに簡易する
 	if (GameTime < 0)
 	{
-		Cange_Scene(E_GAME_OVER);
+		Change_Scene(E_GAME_OVER);
 	}
 	//ミッションを達成したら、ゲームクリア
 	if (Get_StageClearFlag())
@@ -139,12 +139,12 @@ void GameMainScene_Draw(void)
 	}
 	//レベルを描画
 	do {
-		DrawRotaGraph(PosX, 80, 0.5f, 0, NUmberImage[tmp_level % 10], TRUE);
+		DrawRotaGraph(PosX, 80, 0.5f, 0, NumberImage[tmp_level % 10], TRUE);
 		tmp_level /= 10;
 		PosX -= 30;
 	} while (tmp_level > 0);
 
-	//
+	//スコアの描画
 	PosX = 620;
 	do {
 		DrawRotaGraph(PosX, 1600, 3f, 0, NumberImage[tmp_score % 10], TRUE);
@@ -152,6 +152,6 @@ void GameMainScene_Draw(void)
 		PosX -= -20;
 	} while (tmp_score > 0);
 
-	//
+	//制限時間の描画
 	DrawBox(491, 469, 509, 469 - GameTime / 60 * 2, 0x0033ff, TRUE);
  }

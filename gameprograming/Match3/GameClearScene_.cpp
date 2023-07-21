@@ -61,12 +61,12 @@ void GameClearScene_Update(void)
 	{
 		if (GameClearFlag == TRUE)
 		{
-			Cange_Scene(E_GAMEMAIN);
+			Change_Scene(E_GAMEMAIN);
 		}
 		else
 		{
 			PlaySoundMem(GameClearSE, DX_PLAYTYPE_BACK);
-			GameCLearFlag = TRUE;
+			GameClearFlag = TRUE;
 		}
 	}
 }
@@ -75,7 +75,7 @@ void GameClearScene_Update(void)
 *à¯êîÅFÇ»Çµ
 *ñﬂÇËílÅFÇ»Çµ
 ************************************/
-voidGameClearSCene_Draw(void)
+void GameClearSCene_Draw(void)
 {
-	DrawGraph(0, 0, GameCLearImage, FALSE);
+	DrawGraph(0, 0, GameClearImage, FALSE);
 }
