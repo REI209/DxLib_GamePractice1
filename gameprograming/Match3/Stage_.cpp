@@ -214,8 +214,8 @@ void StageDraw(void) {
 						Block[i][j].x = (j - 1) * BLOCKSIZE;
 						Block[i][j].y = (i - 1) * BLOCKSIZE;
 						Block[i][j].width = BLOCKSIZE;
-						Block[i][j].height = BLOCKSAIZE;
-						Block[i][j].image = GetRand(7) + 1;//1^8の乱数
+						Block[i][j].height = BLOCKSIZE;
+						Block[i][j].image = GetRand(7) + 1;//1～8の乱数
 					}
 				}
 			}
@@ -246,11 +246,11 @@ void StageDraw(void) {
 		}
 	}
 
-	/**
+	/************************************
 	*ステージ制御機能：ブロック選択処理
 	* 引数：なし
 	* 戻り値：なし
-	**/
+	*************************************/
 
 	void SelectBlock(void)
 	{
@@ -289,17 +289,17 @@ void StageDraw(void) {
 			if (ClickStatus == E_NONE) {
 				Select[NEXT_CURSOR].x = Select[SELECT_CURSOR].x;
 				Select[NEXT_CURSOR].y = Select[SELECT_CURSOR].y;
-				ClickStatus == E_NONE
+				ClickStatus == E_NONE;
 			}
 			else if (ClickStatus == E_ONCE &&
 				((abs(Select[NEXT_CURSOR].x - Select[SELECT_CURSOR].x)
-					== 1 &&
+== 1 &&
 					(abs(Select[NEXT_CURSOR].y - Select[SELECT_CURSOR].y)
-						== 0)) ||
+== 0)) ||
 					(abs(Select[NEXT_CURSOR].x - Select[SELECT_CURSOR].x)
-						== 0 &&
-						abs(Select[NEXT_CURSOR].y - Select[SELECT_CURSOR].y)
-						== 1)))
+== 0 &&
+						abs(Select[NEXT_CURSOR].y - Select[SELECT_CURSOR].y)==
+  1)))
 			{
 				Select[TMP_CURSOR].x = Select[SELECT_CURSOR].x;
 				Select[TMP_CURSOR].y = Select[SELECT_CURSOR].y;
@@ -310,13 +310,14 @@ void StageDraw(void) {
 		//選択ブロックを交換する
 		if (ClickStatus == E_SECOND)
 		{
-			TmpBlock = Block[Select[NEXT_CURSOR].y + 1][Select
-				[NEXT_CURSOR].x + 1].image;
+			TmpBlock = Block[Select[NEXT_CURSOR].y + 1][Select[NEXT_CURSOR].x +
+     1].image;
 			Block[Select[NEXT_CURSOR].y + 1][Select[NEXT_CURSOR].x + 1].omage =
-				Block[Select[TMP_CURSOR].y + 1][Select[TMP_CURSOR].x + 1].image;
-			Block[Select[TMP_CURSOR].y + 1][Select[TMP_CURSOR].x + 1].image = TmpBlock;
+	Block[Select[TMP_CURSOR].y + 1][Select[TMP_CURSOR].x + 1].image;
+			Block[Select[TMP_CURSOR].y + 1][Select[TMP_CURSOR].x + 1].image =
+	TmpBlock;
 
-			//連鎖が三つ以上か調べる
+			//連鎖が3つ以上か調べる
 			Result = 0;
 			Result += conmo_check(Select[NEXT_CURSOR].y + 1, Select[NEXT_CURSOR].x + 1);
 			Result += conmo_check(Select[TMP_CURSOR].y + 1, Select[TMP_CURSOR].x + 1);
@@ -335,17 +336,17 @@ void StageDraw(void) {
 				Stage_State = 1;
 			}
 
-			//次にクリックできるようにClockFlagを０にする
+			//次にクリックできるようにClockFlagを0にする
 			ClickStatus = E_NONE;
 
 		}
 	}
 
-	/**
+	/*************************************
 	*ステージ制御機能：フェードアウト処理
 	* 戻り値：なし
 	* 引数：なし
-	**/
+	**************************************/
 
 	void FadeOutBlock(void)
 	{
@@ -385,11 +386,11 @@ void StageDraw(void) {
 		}
 	}
 
-	/**
+	/***********************************
 	*ステージ制御機能：ブロック移動処理
 	* 引数：ない
 	* 戻り値：なし
-	**/
+	************************************/
 
 	void MoveBlock(void)
 	{
@@ -427,11 +428,11 @@ void StageDraw(void) {
 	Stage_Stata = 3;
 }
 
-/**
+/*************************************
 *ステージ制御機能：連鎖チェック処理
 * 引数；なし
 * 戻り値：なし
-**/
+**************************************/
 
 void CheckBlock(void)
 {
@@ -460,13 +461,13 @@ void CheckBlock(void)
 		}
 }
 
-/**
+/*********************************************************************
 *ステージ制御機能：クリア条件チェック処理
 * 引数：なし
 * 戻り値：なし
 * 備考：クリア条件フラグを０とし、各スクールの削除ブロックが
 * レベルよりも数が少なかったらチェック処理を中断してゲームを続行する
-**/
+**********************************************************************/
 
 void CheckClear(void)
 {
@@ -488,56 +489,56 @@ void CheckClear(void)
 	}
 }
 
-/**
-*ステージ仔魚機能：ステージステータス情報取得処理
+/*************************************************
+*ステージ制御機能：ステージステータス情報取得処理
 * 引数：なし
 * 戻り値：ステージのステータス情報
-**/
+**************************************************/
 
 int Get_StageState(void)
 {
 	return Stage_State;
 }
 
-/**
+/*******************************************
 *ステージ制御機能：ミッション取得情報処理
 * 引数：なし
 * 戻り値：ミッションがクリアしているか
-**/
+********************************************/
 
 int Get_StageClearFlag(void)
 {
 	return ClearFlag;
 }
 
-/**
+/****************************************
 *ステージ制御機能：ミッション情報取得
 * 引数：なし
 * 戻り値：ミッションがクリアしているか
-**/
+*****************************************/
 
 int Get_StageScore(void)
 {
 	return Stage_Score;
 }
 
-/**
+/******************************************
 *ステージ制御機能：ミッション情報取得処理
 * 引数：次ミッションに必要な数字
 * 戻り値：なし
-**/
+*******************************************/
 
 void Set_StageMission(int mission)
 {
 	Stage_Mission += mission;
 }
 
-/**
+/******************************************
 *ステージ制御機能：連鎖チェック処理
 * 引数１：ブロックｙマス
 * 引数２：ブロックｘマス
 * 戻り値：連鎖有無（０：無し　１：有り）
-**/
+*******************************************/
 
 int combo_check(int y, int x)
 {
@@ -582,11 +583,11 @@ int combo_check(int y, int x)
 	return ret;
 }
 
-/**
+/****************************************
 *ステージ制御機能：連鎖チェック処理
 * 引数：なし
 * 戻り値：連鎖有無（０：無し　１：有り）
-**/
+*****************************************/
 
 void combo_check_h(int y, int x, int* cnt, int* col)
 {
@@ -613,11 +614,11 @@ void combo_check_h(int y, int x, int* cnt, int* col)
 	}
 }
 
-/**
+/*********************************************
 *ステージ制御機能：連鎖チェック処理（横方向）
 * 引数：なし
 * 戻り値：連鎖有無（０：無し　１：有り）
-**/
+**********************************************/
 
 void combo_check_w(int y, int x, int* cnt, int* col)
 {
@@ -644,11 +645,11 @@ void combo_check_w(int y, int x, int* cnt, int* col)
 	}
 }
 
-/**
+/******************************************
 *ステージ制御機能：ブロック情報の保存処理
 * 引数：なし
 * 戻り値：なし
-**/
+*******************************************/
 
 void save_block(void)
 {
@@ -665,11 +666,11 @@ void save_block(void)
 	}
 }
 
-/**
+/******************************************
 *ステージ制御機能：ブロック情報を戻す処理
 * 引数：なし
 * 戻り値：なし
-**/
+*******************************************/
 
 void restore_block(void)
 {
