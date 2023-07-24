@@ -75,7 +75,7 @@ void GameClearScene_Update(void)
 *ˆø”F‚È‚µ
 *–ß‚è’lF‚È‚µ
 ************************************/
-void GameClearSCene_Draw(void)
+void GameClearScene_Draw(void)
 {
 	DrawGraph(0, 0, GameClearImage, FALSE);
 }

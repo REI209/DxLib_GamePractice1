@@ -119,7 +119,7 @@ int GetKeyFlg(int key)
 *ñﬂÇËílÅGÇ»Çµ
 **********************************/
 
-int GeetMousePositionX(void)
+int GetMousePositionX(void)
 {
     return mouse_position_x;
 }

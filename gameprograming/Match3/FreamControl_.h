@@ -13,5 +13,5 @@
 /******************************
 *プロトタイプ宣言
 *******************************/
-void FreamControl_Initalize(void);
+void FreamControl_Initialize(void);
 void FreamControl_Update(void);

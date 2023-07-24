@@ -165,7 +165,7 @@ void StageDraw(void) {
 
 	//選択ブロックを描画
 	DrawGraph(Select[SELECT_CURSOR].x * BLOCKSIZE, Select[SELECT_CURSOR].y *
-		BLOCKSAIZE, BlockImage[9], TRUE);
+		BLOCKSIZE, BlockImage[9], TRUE);
 	if (ClickStatus != E_NONE)
 	{
 		DrawGraph(Select[NEXT_CURSOR].x * BLOCKSIZE,
@@ -191,7 +191,7 @@ void StageDraw(void) {
 	* 戻り値：なし
 	****************************************/
 
-	void CreaeteBlock(void)
+	void CreateBlock(void)
 	{
 		int Check = 0;
 		int i, j;

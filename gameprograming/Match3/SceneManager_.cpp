@@ -1,4 +1,4 @@
-#include"Scenemanager.h"
+#include"SceneManager.h"
 #include"TitleScene.h"
 #include"GameMainScene.h"
 #include"GameClearScene.h"
@@ -17,7 +17,7 @@
 /**************************
 *変数宣言
 ***************************/
-GAME_MODE Game_MOde;     //ゲームモード情報（現在）
+GAME_MODE Game_Mode;     //ゲームモード情報（現在）
 GAME_MODE Next_Mode;     //ゲームモード情報（次）
 
 /**************************
@@ -36,7 +36,7 @@ int SceneManager_Initialize(GAME_MODE mode)
 
 	//シーン読み込み処理
 	//タイトル画面
-	Read_Error = TiileScene_Initialize();
+	Read_Error = TitleScene_Initialize();
 	if (Read_Error == D_ERROR)
 	{
 		return D_ERROR;
@@ -137,7 +137,7 @@ void SceneManager_Draw(void)
 * 引数：変更するゲームモード
 * 戻り値：なし
 *******************************/
-void Cange_Scene(GAME_MODE mode)
+void Change_Scene(GAME_MODE mode)
 {
 	Next_Mode = mode;
 }
