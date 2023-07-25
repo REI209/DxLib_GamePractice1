@@ -72,9 +72,11 @@ LPSTR lpCmdLine,_In_ int nShowCmd)
 	{
 		//入力制御機能更新処理
 		Input_Update();
+		//シーンマネージャー更新処理
+		SceneManager_Update();
 		//画面クリア
 		ClearDrawScreen();
-		//シーンマネージャー更新処理
+		//シーンマネージャー描画処理
 		SceneManager_Draw();
 		//フレームレート制御処理
 		FreamControl_Update();

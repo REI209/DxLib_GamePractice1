@@ -11,7 +11,6 @@
 /****************************
 *プロトタイプ宣言
 *****************************/
-
 int StageInitialize(void);
 void CreateBlock(void);
 void SelectBlock(void);
