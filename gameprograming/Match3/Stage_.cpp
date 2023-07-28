@@ -127,6 +127,10 @@ int StageInitialize(void)
 	{
 		ret = -1;
 	}
+	if (FadeOutSE == -1)
+	{
+		ret = -1;
+	}
 	if (MoveBlockSE == -1)
 	{
 		ret=-1;
@@ -138,8 +142,7 @@ int StageInitialize(void)
 *ステージ制御機能：ステージの描画
 * 引数：なし
 * 戻り値：なし
-*************************************/
-
+*************************************/ //直し
 void StageDraw(void) {
 	DrawGraph(0, 0, StageImage, FALSE);
 
@@ -169,7 +172,7 @@ void StageDraw(void) {
 	if (ClickStatus != E_NONE)
 	{
 		DrawGraph(Select[NEXT_CURSOR].x * BLOCKSIZE,
-			Slect[NEXT_CURSOR].y * BLOCKSIZE, BlockImage[9], TRUE);
+			Select[NEXT_CURSOR].y * BLOCKSIZE, BlockImage[9], TRUE);
 
 		//ミッションを描画
 		SetFontSize(20);
@@ -250,7 +253,7 @@ void StageDraw(void) {
 	*ステージ制御機能：ブロック選択処理
 	* 引数：なし
 	* 戻り値：なし
-	*************************************/
+	*************************************/ //直し
 
 	void SelectBlock(void)
 	{
@@ -294,11 +297,11 @@ void StageDraw(void) {
 			else if (ClickStatus == E_ONCE &&
 				((abs(Select[NEXT_CURSOR].x - Select[SELECT_CURSOR].x)
 == 1 &&
-					(abs(Select[NEXT_CURSOR].y - Select[SELECT_CURSOR].y)
+				(abs(Select[NEXT_CURSOR].y - Select[SELECT_CURSOR].y)
 == 0)) ||
-					(abs(Select[NEXT_CURSOR].x - Select[SELECT_CURSOR].x)
+				(abs(Select[NEXT_CURSOR].x - Select[SELECT_CURSOR].x)
 == 0 &&
-						abs(Select[NEXT_CURSOR].y - Select[SELECT_CURSOR].y)==
+				abs(Select[NEXT_CURSOR].y - Select[SELECT_CURSOR].y)==
   1)))
 			{
 				Select[TMP_CURSOR].x = Select[SELECT_CURSOR].x;
@@ -344,7 +347,7 @@ void StageDraw(void) {
 
 	/*************************************
 	*ステージ制御機能：フェードアウト処理
-	* 戻り値：なし
+	* 戻り値：なし　　　　　　　　　　　　　　　　　　　　//直し
 	* 引数：なし
 	**************************************/
 
@@ -388,29 +391,31 @@ void StageDraw(void) {
 
 	/***********************************
 	*ステージ制御機能：ブロック移動処理
-	* 引数：ない
+	* 引数：ない                                     //直し	
 	* 戻り値：なし
 	************************************/
 
-	void MoveBlock(void)
-	{
+void MoveBlock(void)
+{
 		int i, j, k;
 		//ブロック移動効果音
 		PlaySoundMem(MoveBlockSE, DX_PLAYTYPE_BACK);
 
 		//↓へ移動する処理
-		for (i = ; i < HEIGHT - 1, i++)
+		for (i =1 ; i < HEIGHT - 1, i++)
 		{
-			if (Block[i][j].image == 0)
-			{
-				for (k = i; k > 0; k--)
-				{
+			for(j=1;j<WIDTH-1;j++)
+			{ 
+			   if (Block[i][j].image == 0)
+			   {
+				  for (k = i; k > 0; k--)
+				  {
 					Block[k][j].image = Block[k - 1][j].image;
 					Block[k - 1][j].image = 0;
-				}
-			}
-		}
-	}
+				  }
+			   }
+		    }
+	    }
 
 	//空のブロックを生成する処理
 	for (i = 1; i < HEIGHT - 1; i++)
@@ -459,7 +464,7 @@ void CheckBlock(void)
 	{
 		//連鎖が３つ以上ならブロックを消しブロック移動処理へ移行する
 		Stage_State = 1;
-		}
+	}
 }
 
 /*********************************************************************
@@ -658,7 +663,7 @@ void save_block(void)
 
 	for (i = 0; i < HEIGHT; i++)
 	{
-		for (i = 0; j < HEIGHT; j++)
+		for (j = 0; j < HEIGHT; j++)
 		{
 
 
