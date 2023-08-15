@@ -132,23 +132,23 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AppMain.cpp" />
-    <ClCompile Include="FreamControl_.cpp" />
-    <ClCompile Include="GameOverScene_.cpp" />
-    <ClCompile Include="GameClearScene_.cpp" />
-    <ClCompile Include="GameMainScene_.cpp" />
-    <ClCompile Include="InputControl_.cpp" />
-    <ClCompile Include="SceneManager_.cpp" />
-    <ClCompile Include="Stage_.cpp" />
+    <ClCompile Include="FreamControl.cpp" />
+    <ClCompile Include="GameOverScene.cpp" />
+    <ClCompile Include="GameClearScene.cpp" />
+    <ClCompile Include="GameMainScene.cpp" />
+    <ClCompile Include="InputControl.cpp" />
+    <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="Stage.cpp" />
     <ClCompile Include="TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="FreamControl_.h" />
-    <ClInclude Include="GameClearScene_.h" />
+    <ClInclude Include="FreamControl.h" />
+    <ClInclude Include="GameClearScene.h" />
     <ClInclude Include="GameMainScene.h" />
-    <ClInclude Include="GameOverSenen_.h" />
+    <ClInclude Include="GameOverScene.h" />
     <ClInclude Include="InputControl.h" />
-    <ClInclude Include="SceneManager_.h" />
-    <ClInclude Include="Stage_.h" />
+    <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="Stage.h" />
     <ClInclude Include="TitleScene.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

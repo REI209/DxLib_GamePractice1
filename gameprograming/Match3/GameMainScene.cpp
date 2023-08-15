@@ -6,8 +6,8 @@
 /************************************
 *マクロ定義
 *************************************/
-#define TIMELIMIT         (3600*3)//制限時間
-#define NUMBER_IMAGE_MAX (10)     //数字画面数
+#define TIMELIMIT        (3600*3)//制限時間
+#define NUMBER_IMAGE_MAX (10)//数字画面数
 
 /************************************
 *型定義
@@ -23,7 +23,7 @@ int GameTime;
 int GameCount;  //初期化されないようにするためのカウント
 int ReStartFlag;
 
-int NUmberIMage[NUMBER_IMAGE_MAX];   //数字用画像
+int NumberImage[NUMBER_IMAGE_MAX];   //数字用画像
 
 /************************************
 *プロトタイプ宣言
@@ -43,7 +43,7 @@ int GameMainScene_Initialize(void)
 
    //画像読み込み
    LoadDivGraph("images/number.png", NUMBER_IMAGE_MAX,
-	NUMBER_IMAGE_MAX, 1, 60, 120, NumberImage);
+	NUMBER_IMAGE_MAX, 1, 60, 120,NumberImage);
 
     //ステージ機能初期化
     ret = StageInitialize();
@@ -92,12 +92,12 @@ void GameMainScene_Update(void)
 			MoveBlock();
 			break;
 
-		case 3
+		case 3:
 			CheckBlock();
 			break;
 
 		case 4:
-			CheakClear();
+			CheckClear();
 			break;
 	
 		default:
@@ -147,7 +147,7 @@ void GameMainScene_Draw(void)
 	//スコアの描画
 	PosX = 620;
 	do {
-		DrawRotaGraph(PosX, 1600, 3f, 0, NumberImage[tmp_score % 10], TRUE);
+		DrawRotaGraph(PosX, 1600, 0.3f, 0, NumberImage[tmp_score % 10], TRUE);
 		tmp_score /= 10;
 		PosX -= -20;
 	} while (tmp_score > 0);

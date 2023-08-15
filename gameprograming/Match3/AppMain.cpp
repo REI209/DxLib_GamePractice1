@@ -11,10 +11,10 @@
 /********************************
 *マクロ定義
 *********************************/
-#define SCREEN_HEIGHT  (480)　　//スクリーンサイズ（高さ）
-#define SCREEN_WIDTH 　(640)　　//スクリーンサイズ（幅）
-#define SCREEN_COLORBIT  (32)　//スクリーンカラービット
-#define FONT_SIZE  (20)　　　　//文字サイズ
+#define SCREEN_HEIGHT (480)//スクリーンサイズ（高さ）
+#define SCREEN_WIDTH  (640)//スクリーンサイズ（幅）
+#define SCREEN_COLORBIT (32)//スクリーンカラービット
+#define FONT_SIZE   (20)//文字サイズ
 
 /********************************
 *型定義
@@ -56,7 +56,7 @@ LPSTR lpCmdLine,_In_ int nShowCmd)
 
 	//シーンマネージャー初期化処理
 	// エラーが発生したら、終了
-	if (ScreneManager_Initialize(E_TITLE) == D_ERROR)
+	if (SceneManager_Initialize(E_TITLE) == D_ERROR)
 	{
 		return D_ERROR;
 	}

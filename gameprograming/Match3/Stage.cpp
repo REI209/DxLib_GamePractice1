@@ -6,12 +6,12 @@
 *マクロ定義
 *************************/
 
-#define HEIGHT           (12)  //ブロック配置サイズ（高さ）
-#define WIDTH            (12)　//ブロック配置サイズ（幅）
-#define BLOCKSIZE        (48)　//ブロックサイズ
-#define BLOCK_IMAGE_MAX  (10)  //ブロック画像数
+#define HEIGHT           (12)//ブロック配置サイズ（高さ）
+#define WIDTH            (12)//ブロック配置サイズ（幅）
+#define BLOCKSIZE        (48)//ブロックサイズ
+#define BLOCK_IMAGE_MAX  (10)//ブロック画像数
 
-#define ITEM_MAX         (8)　　//アイテム最大数
+#define ITEM_MAX         (8)//アイテム最大数
 
 #define SELECT_CURSOR    (0)
 #define NEXT_CURSOR      (1)
@@ -222,7 +222,7 @@ void StageDraw(void) {
 					}
 				}
 			}
-			/*for(i=;i<HEIGHT-1;i++)
+			/*for (i = ; i<HEIGHT - 1; i++)
 			{
 			for(j=1;j<WIDTH-1;j++)
 			{
@@ -284,7 +284,7 @@ void StageDraw(void) {
 		}
 
 		//クリックでブロックを選択
-		if (GetKeyFlg(MOUSE_INPUT_LEFT)) {
+		if (GetKeyFlg(MOUSE_INPUT_LEFT)){
 
 			//クリック効果音
 			PlaySoundMem(ClickSE, DX_PLAYTYPE_BACK);
@@ -292,7 +292,7 @@ void StageDraw(void) {
 			if (ClickStatus == E_NONE) {
 				Select[NEXT_CURSOR].x = Select[SELECT_CURSOR].x;
 				Select[NEXT_CURSOR].y = Select[SELECT_CURSOR].y;
-				ClickStatus == E_NONE;
+				ClickStatus  = E_ONCE;
 			}
 			else if (ClickStatus == E_ONCE &&
 				((abs(Select[NEXT_CURSOR].x - Select[SELECT_CURSOR].x)
@@ -347,7 +347,7 @@ void StageDraw(void) {
 
 	/*************************************
 	*ステージ制御機能：フェードアウト処理
-	* 戻り値：なし　　　　　　　　　　　　　　　　　　　　//直し
+	* 戻り値：なし　　　　　　　　　　　　　　　　　　　　
 	* 引数：なし
 	**************************************/
 
