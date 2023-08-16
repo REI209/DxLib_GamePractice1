@@ -25,7 +25,7 @@ typedef struct
 {
 	int flg;
 	int x, y;
-	int width, hight;
+	int width, height;
 	int image;
 	int backup;
 } T_Object;
@@ -62,7 +62,7 @@ int StageImage;  //背景用画像
 
 int ClickSE;  //クリックSE
 int FadeOutSE;  //フェードアウトSE
-int MoveBlockSE;  //ブロック移動SE
+int MoveBlockSE; //ブロック移動SE
 
 /************************
 *プロトタイプ宣言
@@ -165,7 +165,6 @@ void StageDraw(void) {
 			}
 		}
 	}
-
 	//選択ブロックを描画
 	DrawGraph(Select[SELECT_CURSOR].x * BLOCKSIZE, Select[SELECT_CURSOR].y *
 		BLOCKSIZE, BlockImage[9], TRUE);
@@ -187,7 +186,7 @@ void StageDraw(void) {
 
 		}
 	}
-
+}
 	/***************************************
 	*ステージ制御機能：ブロック生成処理
 	* 引数：なし
@@ -315,22 +314,22 @@ void StageDraw(void) {
 		{
 			TmpBlock = Block[Select[NEXT_CURSOR].y + 1][Select[NEXT_CURSOR].x +
      1].image;
-			Block[Select[NEXT_CURSOR].y + 1][Select[NEXT_CURSOR].x + 1].omage =
+			Block[Select[NEXT_CURSOR].y + 1][Select[NEXT_CURSOR].x + 1].image =
 	Block[Select[TMP_CURSOR].y + 1][Select[TMP_CURSOR].x + 1].image;
 			Block[Select[TMP_CURSOR].y + 1][Select[TMP_CURSOR].x + 1].image =
 	TmpBlock;
 
 			//連鎖が3つ以上か調べる
 			Result = 0;
-			Result += conmo_check(Select[NEXT_CURSOR].y + 1, Select[NEXT_CURSOR].x + 1);
-			Result += conmo_check(Select[TMP_CURSOR].y + 1, Select[TMP_CURSOR].x + 1);
+			Result += combo_check(Select[NEXT_CURSOR].y + 1, Select[NEXT_CURSOR].x + 1);
+			Result += combo_check(Select[TMP_CURSOR].y + 1, Select[TMP_CURSOR].x + 1);
 
 			//連鎖が３未満なら選択ブロックを元に戻す
 			if (Result == 0)
 			{
 				int TmpBlock = Block[Select[NEXT_CURSOR].y + 1][Select[NEXT_CURSOR].x + 1].image;
 				Block[Select[NEXT_CURSOR].y + 1][Select[NEXT_CURSOR].x + 1].image = Block
-					[Select[TMP_CURSOR].y + 1][Select[TMP_CURSOR].x + 1].i, age;
+					[Select[TMP_CURSOR].y + 1][Select[TMP_CURSOR].x + 1].image;
 				Block[Select[TMP_CURSOR].y + 1][Select[TMP_CURSOR].x + 1].image = TmpBlock;
 			}
 			else
@@ -402,7 +401,7 @@ void MoveBlock(void)
 		PlaySoundMem(MoveBlockSE, DX_PLAYTYPE_BACK);
 
 		//↓へ移動する処理
-		for (i =1 ; i < HEIGHT - 1, i++)
+		for (i =1 ; i < HEIGHT - 1; i++)
 		{
 			for(j=1;j<WIDTH-1;j++)
 			{ 
