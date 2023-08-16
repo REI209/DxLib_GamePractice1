@@ -91,9 +91,9 @@ int StageInitialize(void)
 	StageImage = LoadGraph("images/stage.png");
 
 	//‰¹Œ¹“Ç‚İ‚İ
-	ClickSE = LoadSoundMem("sound/chick_se.mp3");
+	ClickSE = LoadSoundMem("sounds/click_se.mp3");
 	FadeOutSE = LoadSoundMem("sounds/fadeout_se.mp3");
-	MoveBlockSE = LoadSoundMem("sounds/moveblock_se.mo3");
+	MoveBlockSE = LoadSoundMem("sounds/moveblock_se.mp3");
 
 	//ƒuƒƒbƒN¶¬ˆ—
 	CreateBlock();

@@ -35,7 +35,7 @@ int TitleScene_Initialize(void)
 	TitleImage = LoadGraph("images/title.png");
 	
 	//‰¹Œ¹“Ç‚İ‚İˆ—
-	TitleBGM = LoadGraph("images/title_bgm.mp3");
+	TitleBGM = LoadSoundMem("sounds/title_bgm.mp3");
 
 	if (TitleImage == D_ERROR)
 	{
