@@ -1,91 +1,99 @@
-/*******************************
+/**
 *プログラミング実習
-*マッチ３ゲームの制作
-********************************/
+*マッチ3ゲームの製作
+**/
 
 #include"DxLib.h"
 #include"FreamControl.h"
 #include"InputControl.h"
 #include"SceneManager.h"
 
-/********************************
+/**
 *マクロ定義
-*********************************/
-#define SCREEN_HEIGHT (480)//スクリーンサイズ（高さ）
-#define SCREEN_WIDTH  (640)//スクリーンサイズ（幅）
-#define SCREEN_COLORBIT (32)//スクリーンカラービット
-#define FONT_SIZE   (20)//文字サイズ
+**/
 
-/********************************
+#define SCREEN_HEIGHT  (480)  //スクリーンサイズ（高さ）
+#define SCREEN_WIDTH  (640)  //スクリーンサイズ（幅）
+#define SCREEN_COLORBIT  (32)  //スクリーンカラービット
+#define FONT_SIZE  (20)  //文字サイズ
+
+/**
 *型定義
-*********************************/
+**/
 
-/********************************
-*グローバル変数定義
-*********************************/
+/**
+*グローバル変数宣言
+**/
 
-/********************************
+/**
 *プロトタイプ宣言
-*********************************/
+**/
 
-/********************************
+/**
 *プログラムの開始
-*********************************/
-int WINAPI WinMain(_In_ HINSTANCE hinstance, _In_opt_ HINSTANCE hPrevInstance, _In_
-	LPSTR lpCmdLine, _In_ int nShowCmd)
+**/
+
+int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_
+    LPSTR lpCmdLine, _In_ int nShowCmd)
 {
-	//ウィンドウタイトル設定
-	SetMainWindowText("Match 3 Pazzle");
 
-	//ウィンドウモードで起動
-	ChangeWindowMode(TRUE);
+    //ウィンドウタイトル設定
+    SetMainWindowText("Match 3 Puzzle");
 
-	//画面サイズの最大サイズ、カラービット数を設定
-	SetGraphMode(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_COLORBIT);
+    //ウィンドウモードで起動
+    ChangeWindowMode(TRUE);
 
-	//Dxライブラリの初期化処理
-	//エラーが発生したら、終了する
-	if (DxLib_Init() == D_ERROR)
-	{
-		return D_ERROR;
-	}
+    //画面サイズの最大サイズ、カラービット数を設定
+    SetGraphMode(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_COLORBIT);
 
-	//各種機能の初期化
-	FreamControl_Initialize();      //フレームレート制御機能
-	Input_Initialize();             //入力制御機能
+    //Dxライブラリの初期化処理
+    //エラーが発生したら終了する
+    if (DxLib_Init() == D_ERROR)
+    {
+        return D_ERROR;
+    }
 
-	//シーンマネージャー初期化処理
-	// エラーが発生したら、終了
-	if (SceneManager_Initialize(E_TITLE) == D_ERROR)
-	{
-		return D_ERROR;
-	}
+    //各機能の初期化処理
+    FreamControl_Initialize();  //フレームレート制御機能
+    Input_Initialize();  //入力制御機能
 
-	//描画先画面を裏にする
-	SetDrawScreen(DX_SCREEN_BACK);
+    //シーンマネージャー初期化処理
+    //エラーが発生したら、終了する
+    if (SceneManager_Initialize(E_TITLE) == D_ERROR)
+    {
+        return D_ERROR;
+    }
 
-	//文字サイズを設定
-	SetFontSize(FONT_SIZE);
+    //描画先画面を裏にする
+    SetDrawScreen(DX_SCREEN_BACK);
 
-	//ゲームループ
-	while (ProcessMessage() != D_ERROR && Input_Escape() == FALSE)
-	{
-		//入力制御機能更新処理
-		Input_Update();
-		//シーンマネージャー更新処理
-		SceneManager_Update();
-		//画面クリア
-		ClearDrawScreen();
-		//シーンマネージャー描画処理
-		SceneManager_Draw();
-		//フレームレート制御処理
-		FreamControl_Update();
-		//画面の内容を表画面に反映
-		ScreenFlip();
+    //文字サイズを設定
+    SetFontSize(FONT_SIZE);
 
-	}
-	//Dxライブラリ使用の終了処理
-	DxLib_End();
+    //ゲームループ
+    while (ProcessMessage() != D_ERROR && Input_Escape() == FALSE)
+    {
+        //入力制御機能更新処理
+        Input_Update();
 
-	return 0;
+        //シーンマネージャー更新処理
+        SceneManager_Update();
+
+        //画面クリア
+        ClearDrawScreen();
+
+        //シーンマネージャー描画処理
+        SceneManager_Draw();
+
+        //フレームレート制御処理
+        FreamControl_Update();
+
+        //画面の内容を表画面に反映
+        ScreenFlip();
+    }
+
+    //Dxライブラリ使用の終了処理
+    DxLib_End();
+
+    return 0;
 }

@@ -72,7 +72,7 @@ int SceneManager_Initialize(GAME_MODE mode)
 * 引数：なし
 * 戻り値：なし
 *******************************/
-void SceneManager_Update(void)
+void SceneManager_Update(void) 
 {
 	//前フレームとゲームモードが違っていたらシーンを切り替える
 	if (Game_Mode != Next_Mode);
