@@ -1,4 +1,4 @@
-#include"SceneManager.h"
+#include"Scenemanager.h"
 #include"TitleScene.h"
 #include"GameMainScene.h"
 #include"GameClearScene.h"
@@ -18,7 +18,7 @@
 *変数宣言
 ***************************/
 GAME_MODE Game_Mode;     //ゲームモード情報（現在）
-GAME_MODE Next_Mode;     //ゲームモード情報（次）
+GAME_MODE Next_Mode;  //ゲームモード情報（次）
 
 /**************************
 *プロトタイプ宣言
@@ -72,10 +72,10 @@ int SceneManager_Initialize(GAME_MODE mode)
 * 引数：なし
 * 戻り値：なし
 *******************************/
-void SceneManager_Update(void) 
+void SceneManager_Update(void)
 {
 	//前フレームとゲームモードが違っていたらシーンを切り替える
-	if (Game_Mode != Next_Mode);
+	if (Game_Mode != Next_Mode)
 	{
 		SceneManager_Initialize(Next_Mode);
 	}
