@@ -3,21 +3,19 @@
 #include"Stage.h"
 #include"SceneManager.h"
 
-/**
+/************************
 *マクロ定義
-**/
-
+*************************/
 #define TIMELIMIT   (3600*3)  //時間制限
 #define NUMBER_IMAGE_MAX  (10)  //数字描画数
 
-/**
+/************************
 *型定義
-**/
+*************************/
 
-/**
+/************************
 *変数宣言
-**/
-
+*************************/
 int GameScore;
 int GameLevel;
 int GameMission;
@@ -27,16 +25,15 @@ int ReStartFlag;
 
 int NumberImage[NUMBER_IMAGE_MAX];  //数字用描画
 
-/**
+/*************************
 *プロトタイプ宣言
-**/
+**************************/
 
-/**
-*GAMEメイン画面：じょき化処理
+/*******************************
+*ゲームメイン画面：初期化処理
 * 引数：なし
 * 戻り値：エラー情報
-**/
-
+********************************/
 int GameMainScene_Initialize(void)
 {
 	int ret = 0;
@@ -60,7 +57,7 @@ int GameMainScene_Initialize(void)
 		}
 	}
 
-	//GAMEプレイ初回かどうか？
+	//ゲームプレイ初回かどうか
 	if (GameCount == 0)
 	{
 		GameScore = 0;  //スコアの初期化
@@ -80,11 +77,11 @@ int GameMainScene_Initialize(void)
 }
 
 
-/**
+/********************************
 *ゲームメイン画面：更新処理
 *引数：なし
 *戻り値：なし
-**/
+*********************************/
 void GameMainScene_Update(void)
 {
 	switch (Get_StageState())
@@ -122,12 +119,11 @@ void GameMainScene_Update(void)
 
 }
 
-/**
-*GAMEメイン画面：描画処理
+/********************************
+*ゲームメイン画面：描画処理
 *引数：なし
 *戻り値：なし
-**/
-
+*********************************/
 void GameMainScene_Draw(void)
 {
 	int PosX = 600;
